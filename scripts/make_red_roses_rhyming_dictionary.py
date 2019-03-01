@@ -8,7 +8,7 @@ import pronouncing
 
 MAX_SENTENCE_LEN = 10
 MAX_STARS = 2
-MIN_SENTENCES = 500
+MIN_SENTENCES = 5000
 end_sentences: Dict[str, Dict[str, bool]] = {}
 
 with open("data/reviews.json", "r") as inf:
