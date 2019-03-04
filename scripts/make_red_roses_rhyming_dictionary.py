@@ -11,7 +11,7 @@ MAX_STARS = 2
 MIN_SENTENCES = 5000
 end_sentences: Dict[str, Dict[str, bool]] = {}
 
-with open("data/reviews.json", "r") as inf:
+with open("data/raw/reviews.json", "r") as inf:
     sentcount = 0
     while sentcount < MIN_SENTENCES:
         line = inf.readline()

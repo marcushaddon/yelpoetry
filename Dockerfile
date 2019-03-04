@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 3000
 
-CMD ["python", "src/app/main.py"]
+CMD ["python", "main.py"]

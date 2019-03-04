@@ -2,4 +2,4 @@ venv/
 *.pyc
 .mypy_cache
 .vscode
-data/reviews.json
+data/raw/*

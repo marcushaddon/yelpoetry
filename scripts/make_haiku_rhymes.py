@@ -8,7 +8,7 @@ from textblob import TextBlob
 
 MIN_LINE_COUNT = 500
 
-with open("data/reviews.json", "r") as infile:
+with open("data/raw/reviews.json", "r") as infile:
     fives: List[str] = []
     sevens: List[str] = []
 
