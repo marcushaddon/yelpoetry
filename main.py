@@ -1,6 +1,7 @@
 """Tweet and toot."""
 import os
 import random
+from datetime import datetime
 
 import requests
 import tweepy
@@ -52,6 +53,10 @@ def tweet(text: str) -> None:
     api.update_status(status=text) 
 
 if __name__ == '__main__':
+    hour = datetime.now().hour
+    if not hour % 3 == 0:
+        return
+
     roll = random.random()
     if roll < 0.5:
         text = roses_are_red()
