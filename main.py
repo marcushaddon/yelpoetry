@@ -1,7 +1,7 @@
 """Tweet and toot."""
 import os
 import random
-from datetime import datetime
+import time
 
 import requests
 import tweepy
@@ -39,8 +39,6 @@ def tweet(text: str) -> None:
     consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
     access_token = os.environ['TWITTER_ACCESS_TOKEN']
     access_token_secret = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
-
-    print("TOKENSSS", access_token, access_token_secret)
     
     # authentication of consumer key and secret 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
@@ -53,15 +51,26 @@ def tweet(text: str) -> None:
     api.update_status(status=text) 
 
 if __name__ == '__main__':
-    hour = datetime.now().hour
-    if not hour % 3 == 0:
-        quit(0)
+    with open("last", "r") as infile:
+        line = infile.readline()
+        if not line == "":
+            last = float(line)
+            now = time.time()
+            if now - last < 60 * 60 * 3:
+                print("Not long enough since last tweet, snoozing")
+                exit(0)
 
     roll = random.random()
-    if roll < 0.5:
+    if roll < 0.4:
         text = roses_are_red()
     else:
         text = generate_haiku()
     
     mastadon_res = toot(text)
     twitter_res = tweet(text)
+
+    newnow = time.time()
+    with open("last", "w") as out:
+        out.write(str(newnow))
+
+    
