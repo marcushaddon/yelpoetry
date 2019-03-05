@@ -55,7 +55,7 @@ def tweet(text: str) -> None:
 if __name__ == '__main__':
     hour = datetime.now().hour
     if not hour % 3 == 0:
-        return
+        quit(0)
 
     roll = random.random()
     if roll < 0.5:
