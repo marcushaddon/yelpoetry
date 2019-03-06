@@ -3,7 +3,7 @@
 import json
 import random
 
-def generate_haiku() -> str:
+def haiku() -> str:
     """Generate a haiku."""
     try:
         infile = open('data/haiku_rhymes.json')
