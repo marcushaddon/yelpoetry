@@ -7,7 +7,8 @@ import requests
 import tweepy
 
 from poem_generators.red_roses import roses_are_red
-from poem_generators.haiku import generate_haiku
+from poem_generators.haiku import haiku
+from poem_generators import limmerick
 
 def toot(text: str) -> bool:
     """Make a toot."""
@@ -51,26 +52,15 @@ def tweet(text: str) -> None:
     api.update_status(status=text) 
 
 if __name__ == '__main__':
-    with open("last", "r") as infile:
-        line = infile.readline()
-        if not line == "":
-            last = float(line)
-            now = time.time()
-            if now - last < 60 * 60 * 3:
-                print("Not long enough since last tweet, snoozing")
-                exit(0)
+    print("Creating a poem...")
 
-    roll = random.random()
-    if roll < 0.4:
-        text = roses_are_red()
-    else:
-        text = generate_haiku()
+    choice = random.choice((
+        ("a haiku:\n", generate_haiku),
+        ("a limerick:\n", limmerick),
+        ("", roses_are_red)
+    ))
+
+    text = choice[0] + choice[1]()
     
     mastadon_res = toot(text)
     twitter_res = tweet(text)
-
-    newnow = time.time()
-    with open("last", "w") as out:
-        out.write(str(newnow))
-
-    
