@@ -11,7 +11,7 @@ MAX_STARS = 2
 MIN_SENTENCES = 5000
 end_sentences: Dict[str, Dict[str, bool]] = {}
 
-with open("data/raw/reviews.json", "r") as inf:
+with open("data/reviews.json", "r") as inf:
     sentcount = 0
     while sentcount < MIN_SENTENCES:
         line = inf.readline()
@@ -50,5 +50,5 @@ with open("data/raw/reviews.json", "r") as inf:
 
 
 purged = { sentence.raw: end_sentences[sentence] for sentence in end_sentences.keys() if len(end_sentences[sentence]) > 0}
-with open("data/red_roses_rhymes.json", "w") as outfile:
+with open("yelpoet/rhymes/red_roses_rhymes.json", "w") as outfile:
     json.dump(purged, outfile, indent=4)

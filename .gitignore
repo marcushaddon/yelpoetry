@@ -2,4 +2,4 @@ venv/
 *.pyc
 .mypy_cache
 .vscode
-data/raw/*
+data/*

@@ -8,7 +8,7 @@ from textblob import TextBlob
 
 MIN_LINE_COUNT = 500
 
-with open("data/raw/reviews.json", "r") as infile:
+with open("data/reviews.json", "r") as infile:
     fives: List[str] = []
     sevens: List[str] = []
 
@@ -40,5 +40,5 @@ lines = {
     'sevens': sevens,
 }
 
-with open('data/haiku_rhymes.json', 'w') as outfile:
+with open('yelpoet/rhymes/haiku_rhymes.json', 'w') as outfile:
     json.dump(lines, outfile, indent=4)

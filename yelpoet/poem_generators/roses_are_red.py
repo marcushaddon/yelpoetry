@@ -7,7 +7,7 @@ def roses_are_red():
     """Write a 'roses are red' style poem."""
     try:
         # TODO: Resolve paths in a better way
-        infile = open('data/red_roses_rhymes.json', 'r')
+        infile = open('yelpoet/rhymes/red_roses_rhymes.json', 'r')
     except Exception as e:
         print('Error opening roses json!', e)
         quit()

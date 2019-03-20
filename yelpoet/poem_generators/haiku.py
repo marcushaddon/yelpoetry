@@ -6,7 +6,7 @@ import random
 def haiku() -> str:
     """Generate a haiku."""
     try:
-        infile = open('data/haiku_rhymes.json')
+        infile = open('yelpoet/rhymes/haiku_rhymes.json')
     except Exception as e:
         print("Promblem opening haiku json", e)
         quit()
@@ -25,4 +25,4 @@ def haiku() -> str:
     return '\n'.join([a, b, c])
     
 if __name__ == '__main__':
-    print(generate_haiku())
+    print(haiku())

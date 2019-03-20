@@ -2,8 +2,8 @@
 import random
 import json
 
-def generate_limmerick():
-    with open("data/limmerick_rhymes.json", "r") as infile:
+def limmerick():
+    with open("yelpoet/rhymes/limmerick_rhymes.json", "r") as infile:
         rhymes = json.load(infile)
 
     a_parts = rhymes["a"]
@@ -26,4 +26,4 @@ def generate_limmerick():
     return poem
 
 if __name__ == "__main__":
-    print(generate_limmerick())
+    print(limmerick())

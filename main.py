@@ -6,9 +6,9 @@ import time
 import requests
 import tweepy
 
-from poem_generators.red_roses import roses_are_red
-from poem_generators.haiku import haiku
-from poem_generators import limmerick
+from yelpoet.poem_generators.red_roses import roses_are_red
+from yelpoet.poem_generators.haiku import haiku
+from yelpoet.poem_generators.limmerick import generate_limmerick
 
 def toot(text: str) -> bool:
     """Make a toot."""
@@ -55,12 +55,15 @@ if __name__ == '__main__':
     print("Creating a poem...")
 
     choice = random.choice((
-        ("a haiku:\n", generate_haiku),
-        ("a limerick:\n", limmerick),
+        ("a haiku:\n", haiku),
+        ("a limerick:\n", generate_limmerick),
         ("", roses_are_red)
     ))
 
-    text = choice[0] + choice[1]()
+    try:
+        text = choice[0] + choice[1]()
+    except TypeError:
+        print("Type Error: ", choice)
     
     mastadon_res = toot(text)
     twitter_res = tweet(text)
