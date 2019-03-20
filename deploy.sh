@@ -1,7 +1,10 @@
 #!/bin/bash
 
-zip -r function.zip main.py yelpoet venv/lib/python3.6/site-packages
+cd venv/lib/python3.6/site-packages
+zip -r9 ../../../../function.zip .
+cd ../../../../
+zip -gr function.zip lambda_function.py yelpoet
 
 aws lambda update-function-code --function-name $1 --zip fileb://function.zip
 
-rm function.zip
+rm -rf function.zip

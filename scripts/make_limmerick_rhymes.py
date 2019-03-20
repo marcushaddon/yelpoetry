@@ -9,7 +9,7 @@ from typing import Dict, List
 import pronouncing as p
 from textblob import TextBlob
 
-MIN_A_COUNT = 100
+MIN_A_COUNT = 1000
 MIN_B_COUNT = MIN_A_COUNT * 2 / 5
 
 # Stress pattern for limericks
