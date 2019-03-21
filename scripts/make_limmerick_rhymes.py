@@ -9,7 +9,7 @@ from typing import Dict, List
 import pronouncing as p
 from textblob import TextBlob
 
-MIN_A_COUNT = 1000
+MIN_A_COUNT = 5000
 MIN_B_COUNT = MIN_A_COUNT * 2 / 5
 
 # Stress pattern for limericks
@@ -29,15 +29,9 @@ def get_emph(pos_emphs):
 with open("data/reviews.json") as inf:
     acount = 0
     bcount = 0
-    # TODO: not right
 
     print("Gathering a and b lines...")
     while acount < MIN_A_COUNT and bcount < MIN_B_COUNT:
-        if acount % 50 == 0:
-            os.system("clear")
-            print("condition is still true at " + str(time.time()))
-            print("A LINES: " + str(acount))
-            print("B Lines: " + str(bcount))
         line = inf.readline()
         review = json.loads(line)
         if review["stars"] > 2:

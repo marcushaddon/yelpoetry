@@ -13,7 +13,10 @@ def limmerick():
     b = random.choice(a_parts[a])
     c = random.choice(list(b_parts.keys()))
     d = random.choice(b_parts[c])
-    e = random.choice(a_parts[b])
+    while True:
+        e = random.choice(a_parts[b])
+        if e != a:
+            break
 
     poem = "\n".join([
         a,
